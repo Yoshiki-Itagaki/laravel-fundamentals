@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Foundation\Console\AboutCommand;
@@ -22,11 +23,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('home', [HomeController::class,'index']);
+//Single Action Controllers
+Route::get('home', HomeController::class);
 
+//Basic Controllers
 Route::get('about', [AboutController::class,'index']);
 
 Route::get('contact', [ContactController::class,'index']);
+
+//Resource Controllers
+Route::resource('blog', BlogController::class);
 
 Route::fallback(function () {
     return "Route Not Exist";
