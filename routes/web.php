@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeController;
+use Illuminate\Foundation\Console\AboutCommand;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,39 +22,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('home', function () {
-    $blogs = [
-        [
-            'title' => 'Title one',
-            'body'=> 'this is a body text one',
-            'status' => 1
-        ],
-        [
-            'title' => 'Title two',
-            'body'=> 'this is a body text two',
-            'status' => 0
-        ],
-        [
-            'title' => 'Title three',
-            'body'=> 'this is a body text three',
-            'status' => 0
-        ],
-        [
-            'title' => 'Title four',
-            'body'=> 'this is a body text four',
-            'status' => 1
-        ]
-    ];
-    return view('home', compact('blogs'));
-});
+Route::get('home', [HomeController::class,'index']);
 
-Route::get('about', function () {
-    return view('about');
-});
+Route::get('about', [AboutController::class,'index']);
 
-Route::get('contact', function () {
-    return view('contact');
-});
+Route::get('contact', [ContactController::class,'index']);
 
 Route::fallback(function () {
     return "Route Not Exist";
