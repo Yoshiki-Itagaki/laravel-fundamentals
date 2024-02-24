@@ -12,10 +12,8 @@ class HomeController extends Controller
      */
     public function __invoke(Request $request)
     {
-        DB::table('posts')->where('id', 55)->update([
-            'title' => 'Updated the data!',
-            'description'=> 'Testing out the insert statement!'
-        ]);
+        // DB::table('posts')->where('id', 56)->delete();
+        DB::table('posts')->delete(53);
 
         dd('success!');
 
