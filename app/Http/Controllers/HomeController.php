@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -12,19 +12,22 @@ class HomeController extends Controller
      */
     public function __invoke(Request $request)
     {
-        //# Aggregate Statements
+        // return  Post::all();
+        // return Post::find(3);
 
-        //count
-        // return DB::table('posts')->count();
-        //max
-        // return DB::table('posts')->max('views');
-        //min
-        // return DB::table('posts')->min('views');
-        //avg
-        // return DB::table('posts')->avg('views');
-        //sum
-        return DB::table('posts')->sum('views');
+        // $post = Post::find(3);
+        // return $post->category_id;
 
+        //return Post::findOrFail(80);
 
+        // $posts = Post::all();
+        // foreach($posts as $post){
+        //     echo "$post->views \n";
+        // };
+
+        // return Post::where('views', '>', 200)->get();
+        // return Post::where('views', '=', 200)->get();
+        // return Post::where('views', '>', 100)->where('id', '<', 25)->get();
+        return Post::where('views', '>', 200)->orWhere('id', '<', 25)->get();
     }
 }
