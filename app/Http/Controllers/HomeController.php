@@ -12,22 +12,19 @@ class HomeController extends Controller
      */
     public function __invoke(Request $request)
     {
-        // return  Post::all();
-        // return Post::find(3);
+       $post = new Post();
 
-        // $post = Post::find(3);
-        // return $post->category_id;
+       $post->title = 'new post 2024/02/25';
+       $post->description = 'description for the new post 2024/02/25';
+       $post->status = 1;
+       $post->publish_date = date('Y-m-d');
+       $post->user_id = 1;
+       $post->category_id = 2;
+       $post->views = 400;
 
-        //return Post::findOrFail(80);
+       $post->save();
 
-        // $posts = Post::all();
-        // foreach($posts as $post){
-        //     echo "$post->views \n";
-        // };
+       dd('Success!');
 
-        // return Post::where('views', '>', 200)->get();
-        // return Post::where('views', '=', 200)->get();
-        // return Post::where('views', '>', 100)->where('id', '<', 25)->get();
-        return Post::where('views', '>', 200)->orWhere('id', '<', 25)->get();
     }
 }
