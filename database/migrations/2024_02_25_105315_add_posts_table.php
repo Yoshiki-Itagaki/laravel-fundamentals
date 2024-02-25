@@ -12,10 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->date('publish_date');
-            $table->integer('user_id');
-            $table->integer('category_id');
-            $table->integer('views');
+            $table->softDeletes();
         });
     }
 
@@ -25,7 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('posts', function (Blueprint $table) {
-            //
+            $table->dropSoftDeletes();
         });
     }
 };
