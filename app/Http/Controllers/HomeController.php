@@ -12,6 +12,13 @@ class HomeController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return Post::onlyTrashed()->get();
+        // # Restore a record that has been soft-deleted
+        // Post::withTrashed()->find(57)->restore();
+        // dd('Successful!');
+
+        // # Hard-delete a record
+        Post::withTrashed()->find(59)->forceDelete();
+        dd('Successful!');
+
     }
 }
