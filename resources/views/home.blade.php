@@ -33,7 +33,7 @@
         @endforeach --}}
 
         {{-- #3 one-to-many relationship --}}
-        @foreach ($categories as $category )
+        {{-- @foreach ($categories as $category )
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
@@ -41,6 +41,25 @@
                     <p>{{$category->description}}</p>
                     <p class="ltn-sm btn-success">{{$category->category->id}}</p>
                     <p class="ltn-sm btn-success">{{$category->category->name}}</p>
+                </div>
+            </div>
+        </div>
+        @endforeach --}}
+
+        {{-- #4 many-to-many relationship --}}
+        @foreach ($posts as $post )
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4>{{$post->title}}</h4>
+                    <p>{{$post->description}}</p>
+
+                    <ul>
+                    @foreach ($post->tags as $tag )
+                        <li>{{$tag->name}}</li>
+                    @endforeach
+                    <ul>
+
                 </div>
             </div>
         </div>
